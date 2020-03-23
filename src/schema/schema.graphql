@@ -1,0 +1,83 @@
+type Query {
+  """ 
+  Obtenemos la información de las carreras seleccionadas por año.
+  Tener en cuenta que solo existen las temporadas desde la 1950 a CurrentDate (Año Actual).
+  En el caso de que introduzcamos un valor que no corresponde a ese
+  rango de años, se asignará el año actual.
+  """
+  seasonsList: [Season!]!
+  """
+  Carrera seleccionada por año y por número de carrera.
+  Tener en cuenta que solo existen las temporadas desde la 1950 a CurrentDate (Año Actual).
+  En el caso de que introduzcamos un valor que no corresponde a ese
+  rango de años, se asignará el año actual.
+  """
+  reacesBySeason(season: String!): [Race!]!
+  """
+  Lista de los pilotos de la F1 de toda la historia.
+  Tenemos dos opciones:
+  Obtener todos los pilotos
+  Obtener los pilotos haciendo uso de la paginación y podemos limitar el número de resultados
+  Tener en cuenta que solo existen las temporadas desde la 1950 a CurrentDate (Año Actual).
+  En el caso de que introduzcamos un valor que no corresponde a ese
+  rango de años, se asignará el año actual. Por ejemplo, si nos encontramos
+  en el año 2019, el año quese asignará será el 2019 en el caso de que no
+  añadamos el año correctamente
+  """
+  reaceBySeasonRound(season: String!, round: Int!): Race!
+  """
+  Lista de los pilotos de la F1 de toda la historia.
+  Tenemos dos opciones:
+  Obtener todos los pilotos
+  Obtener los pilotos haciendo uso de la paginación y podemos limitar el número de resultados
+  Tener en cuenta que solo existen las temporadas desde la 1950 a CurrentDate (Año Actual)
+  En el caso de que introduzcamos un valor que no corresponde a ese
+  rango de años, se asignará el año actual.
+  """
+  driversList(limit: Int, offset: Int): [Driver!]!
+  """
+  Lista de los pilotos de la F1 de toda la historia.
+  Tenemos dos opciones:
+  Obtener todos los pilotos
+  Obtener los pilotos haciendo uso de la paginación y podemos limitar el número de resultados
+  Tener en cuenta que solo existen las temporadas desde la 1950 a CurrentDate (Año Actual).
+  En el caso de que introduzcamos un valor que no corresponde a ese
+  rango de años, se asignará el año actual.
+  """
+  driversBySeason(season: String!): [Driver!]!
+  """ 
+  Obtenemos la información de los pilotos seleccionados por año y número de carrera.
+  Tener en cuenta que solo existen las temporadas desde la 1950 a CurrentDate (Año Actual).
+  En el caso de que introduzcamos un valor que no corresponde a ese
+  rango de años, se asignará el año actual. Por ejemplo, si nos encontramos
+  en el año 2019, el año quese asignará será el 2019 en el caso de que no
+  añadamos el año correctamente
+  """
+  driversBySeasonRound(season: String!, round: Int): [Driver!]!
+  """
+  Obtenemos la información del piloto mediante el valor 'id'
+  Este valor lo obtenemos del tipo de objeto 'Driver' en la propiedad 'id'
+  donde lo pasamos para obtener los detalles de ese piloto seleccionado.
+  Si introducimos con el 'id' 'alonso', obtendremos la información del piloto
+  Fernando Alonso
+  """
+  driversById(id: String!): Driver!
+  """
+  Clasificación final de los pilotos de una temporada.
+  Tener en cuenta que solo existen las temporadas desde la 1950 a CurrentDate (Año Actual).
+  En el caso de que introduzcamos un valor que no corresponde a ese
+  rango de años, se asignará el año actual. Por ejemplo, si nos encontramos
+  en el año 2019, el año quese asignará será el 2019 en el caso de que no
+  añadamos el año correctamente
+  """
+  driverStandings(season: String!): [DriverStanding!]!
+  """
+  Lista de los circuitos de la F1 de toda la historia.
+  Tenemos dos opciones:
+  Obtener todos los circuitos
+  Obtener los circuitos haciendo uso de la paginación y podemos limitar el número de resultados
+  """
+  circuitList(limit: Int, offset: Int): [Circuit!]!
+  "Circuito seleccionado mediante el id del piloto. Si no encuentra nada, nos devuelve null"
+  circuitById(id: String!): Circuit!
+}
